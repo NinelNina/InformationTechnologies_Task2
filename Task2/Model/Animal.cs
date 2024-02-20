@@ -2,7 +2,9 @@
 
 public abstract class Animal
 {
-    public abstract double Speed { get; }
+    public double Speed { get; set; }
+    protected const double maxSpeed = 100;
+    protected const double minSpeed = 0;
 
     public abstract void Move();
     public abstract void Stand();

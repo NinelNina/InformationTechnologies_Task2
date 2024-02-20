@@ -1,21 +1,27 @@
 ﻿namespace Task2.Model;
 
-public class Dog : Animal, IVoicable
+public class Dog : Animal, IVoicalizable
 {
-    public override double Speed => throw new NotImplementedException();
+    public event EventHandler Voice;
 
     public override void Move()
     {
-        throw new NotImplementedException();
+        if (Speed < maxSpeed)
+        {
+            Speed += 10;
+        }
+    }
+
+    public void OnVocalize()
+    {
+        Voice?.Invoke(this, EventArgs.Empty);
     }
 
     public override void Stand()
     {
-        throw new NotImplementedException();
-    }
-
-    public void Voice()
-    {
-        throw new NotImplementedException();
+        if (Speed > minSpeed)
+        {
+            Speed -= 10;
+        }
     }
 }

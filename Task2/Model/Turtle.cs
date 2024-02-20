@@ -2,15 +2,19 @@
 
 public class Turtle : Animal
 {
-    public override double Speed => throw new NotImplementedException();
-
     public override void Move()
     {
-        throw new NotImplementedException();
+        if (Speed < maxSpeed)
+        {
+            Speed += 5;
+        }
     }
 
     public override void Stand()
     {
-        throw new NotImplementedException();
+        if (Speed > minSpeed)
+        {
+            Speed -= 5;
+        }
     }
 }

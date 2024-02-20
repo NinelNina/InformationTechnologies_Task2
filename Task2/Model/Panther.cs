@@ -1,26 +1,33 @@
 ﻿namespace Task2.Model;
 
-public class Panther : Animal, IVoicable
+public class Panther : Animal, IVoicalizable
 {
-    public override double Speed => throw new NotImplementedException();
+    public event EventHandler Voice;
+    public event EventHandler ClimbTree;
 
     public override void Move()
     {
-        throw new NotImplementedException();
+        if (Speed < maxSpeed)
+        {
+            Speed += 20;
+        }
     }
 
     public override void Stand()
     {
-        throw new NotImplementedException();
+        if (Speed > minSpeed)
+        {
+            Speed -= 20;
+        }
     }
 
-    public void Voice()
+    public void OnClimbTree()
     {
-        throw new NotImplementedException();
+        ClimbTree?.Invoke(this, EventArgs.Empty);
     }
 
-    public string ClimbTree()
+    public void OnVocalize()
     {
-        return "*Пантера залезла на дерево*";
+        Voice?.Invoke(this, EventArgs.Empty);
     }
 }
