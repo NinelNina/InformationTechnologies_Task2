@@ -6,6 +6,6 @@ public abstract class Animal
     protected const double maxSpeed = 100;
     protected const double minSpeed = 0;
 
-    public abstract void Move();
-    public abstract void Stand();
+    public abstract bool Move();
+    public abstract bool Stand();
 }

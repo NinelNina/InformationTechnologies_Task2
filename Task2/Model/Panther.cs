@@ -2,23 +2,29 @@
 
 public class Panther : Animal, IVoicalizable
 {
-    public event EventHandler Voice;
+    public event IVoicalizable.VoiceHandler Voice;
     public event EventHandler ClimbTree;
 
-    public override void Move()
+    public override bool Move()
     {
         if (Speed < maxSpeed)
         {
             Speed += 20;
+
+            return true;
         }
+        return false;
     }
 
-    public override void Stand()
+    public override bool Stand()
     {
         if (Speed > minSpeed)
         {
             Speed -= 20;
+
+            return true;
         }
+        return false;
     }
 
     public void OnClimbTree()
@@ -28,6 +34,6 @@ public class Panther : Animal, IVoicalizable
 
     public void OnVocalize()
     {
-        Voice?.Invoke(this, EventArgs.Empty);
+        Voice?.Invoke($"Ррр!");
     }
 }

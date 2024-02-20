@@ -23,32 +23,34 @@
         <TextBlock Grid.Column="1" Text="Пантера" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
         <TextBlock Grid.Column="2" Text="Черепаха" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
 
-        <!-- ProgressBar для собаки -->
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Скорость:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ProgressBar Grid.Column="0" Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding DogSpeed}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10"/>
+        <ProgressBar Grid.Column="0" Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding DogSpeed}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="10" Margin="10"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding DogSpeed, StringFormat={}{0:F0}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <!-- ProgressBar для пантеры -->
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Скорость:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ProgressBar Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding PantherSpeed}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10"/>
-
-        <!-- ProgressBar для черепахи -->
+        <ProgressBar Grid.Column="1" Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding PantherSpeed}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="10" Margin="10"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding PantherSpeed, StringFormat={}{0:F0}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
         <TextBlock Grid.Column="2" Grid.Row="1" Text="Скорость:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ProgressBar Grid.Column="2" Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding TurtleSpeed}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10"/>
-
-        <!-- Кнопки для перемещения животных -->
+        <ProgressBar Grid.Column="2" Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding TurtleSpeed}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="10" Margin="10"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding TurtleSpeed, StringFormat={}{0:F0}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
         <StackPanel Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
             <Button Content="Голос" Margin="0,0,0,10"/>
-            <Button Content="Замедлиться" Margin="0,0,0,10"/>
+            <Button Content="Замедлиться" Click="StandDog_Click" Margin="0,0,0,10"/>
             <Button Content="Ускориться" Click="MoveDog_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Move Panther" Click="MovePanther_Click"/>
+            <Button Content="Залезть на дерево" Margin="0,0,0,10"/>
+            <Button Content="Голос" Click="DogVoice_Click" Margin="0,0,0,10"/>
+            <Button Content="Замедлиться" Click="StandPanther_Click" Margin="0,0,0,10"/>
+            <Button Content="Ускориться" Click="MovePanther_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Move Turtle" Click="MoveTurtle_Click"/>
+            <Button Content="Замедлиться" Click="StandTurtle_Click" Margin="0,0,0,10"/>
+            <Button Content="Ускориться" Click="MoveTurtle_Click"/>
         </StackPanel>
 
-        <!-- Сообщение -->
         <TextBlock Text="{Binding Message}" Grid.ColumnSpan="3" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"/>
     </Grid>
 </Window>

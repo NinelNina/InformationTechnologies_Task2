@@ -2,19 +2,25 @@
 
 public class Turtle : Animal
 {
-    public override void Move()
+    public override bool Move()
     {
         if (Speed < maxSpeed)
         {
             Speed += 5;
+
+            return true;
         }
+        return false;
     }
 
-    public override void Stand()
+    public override bool Stand()
     {
         if (Speed > minSpeed)
         {
             Speed -= 5;
+
+            return true;
         }
+        return false;
     }
 }

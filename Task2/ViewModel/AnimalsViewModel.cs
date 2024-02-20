@@ -1,16 +1,35 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Task2.Model;
 
 namespace Task2.ViewModel
 {
     public class AnimalsViewModel : INotifyPropertyChanged
     {
+        public Panther Panther { get; set; }
+        public Dog Dog { get; set; }
+        public Turtle Turtle { get; set; }
         private double _dogSpeed;
         private double _pantherSpeed;
         private double _turtleSpeed;
         private string _message;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public event Action PantherOnVoiceCommand;
+        public event Action DogOnVoiceCommand;
+
+        public event EventHandler<string> ShowVoiceMessage;
+
+        public void PantherOnVoice() 
+        { 
+            Panther.OnVocalize();
+        }
+        
+        public void DogOnVoice() 
+        { 
+            Dog.OnVocalize();
+        }
 
         public double DogSpeed
         {
@@ -54,31 +73,78 @@ namespace Task2.ViewModel
 
         public AnimalsViewModel()
         {
-            // Инициализация скоростей
+            Dog = new Dog();
+            Panther = new Panther();
+            Turtle = new Turtle();
+
             DogSpeed = 0;
             PantherSpeed = 0;
             TurtleSpeed = 0;
+
+            DogOnVoiceCommand += DogOnVoice; 
+            PantherOnVoiceCommand += PantherOnVoice;
+            
+            Dog.Voice += Voice;
+            Panther.Voice += Voice;
+        }
+
+        private void Voice(string message)
+        {
+            Message = message;
+        }
+
+        private void OnShowVoiceMessage(string message)
+        {
+            ShowVoiceMessage?.Invoke(this, message);
         }
 
         public void DogMove()
         {
-            var dog = new Dog();
-            dog.Move();
-            DogSpeed = dog.Speed;
+            if (Dog.Move())
+            {
+                DogSpeed = Dog.Speed;
+            }
+        }
+
+        public void DogStand()
+        {
+            if (Dog.Stand())
+            {
+                DogSpeed = Dog.Speed;
+            }
         }
 
         public void PantherMove()
         {
-            var panther = new Panther();
-            panther.Move();
-            PantherSpeed = panther.Speed;
+            if (Panther.Move())
+            {
+                PantherSpeed = Panther.Speed;
+            }
+        }
+
+
+        public void PantherStand()
+        {
+            if (Panther.Stand())
+            {
+                PantherSpeed = Panther.Speed;
+            }
         }
 
         public void TurtleMove()
         {
-            var turtle = new Turtle();
-            turtle.Move();
-            TurtleSpeed = turtle.Speed;
+            if (Turtle.Move())
+            {
+                TurtleSpeed = Turtle.Speed;
+            }
+        }
+
+        public void TurtleStand()
+        {
+            if (Turtle.Stand())
+            {
+                TurtleSpeed = Turtle.Speed;
+            }
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
