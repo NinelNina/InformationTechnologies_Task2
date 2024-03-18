@@ -36,13 +36,13 @@
         <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding TurtleSpeed, StringFormat={}{0:F0}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         
         <StackPanel Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Голос" Margin="0,0,0,10"/>
+            <Button Content="Голос" Click="DogOnVoice" Margin="0,0,0,10"/>
             <Button Content="Замедлиться" Click="StandDog_Click" Margin="0,0,0,10"/>
             <Button Content="Ускориться" Click="MoveDog_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Залезть на дерево" Margin="0,0,0,10"/>
-            <Button Content="Голос" Click="DogVoice_Click" Margin="0,0,0,10"/>
+            <Button Content="Залезть на дерево" Click="PantherOnClimb" Margin="0,0,0,10"/>
+            <Button Content="Голос" Click="PantherOnVoice" Margin="0,0,0,10"/>
             <Button Content="Замедлиться" Click="StandPanther_Click" Margin="0,0,0,10"/>
             <Button Content="Ускориться" Click="MovePanther_Click"/>
         </StackPanel>

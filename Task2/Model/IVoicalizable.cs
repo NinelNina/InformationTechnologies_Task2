@@ -2,7 +2,6 @@
 
 public interface IVoicalizable
 {
-    delegate void VoiceHandler(string message);
-    event VoiceHandler Voice;
+    event EventHandler Voice;
     void OnVocalize();
 }

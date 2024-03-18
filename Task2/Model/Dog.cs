@@ -1,8 +1,9 @@
-﻿namespace Task2.Model;
+﻿
+namespace Task2.Model;
 
 public class Dog : Animal, IVoicalizable
 {
-    public event IVoicalizable.VoiceHandler Voice;
+    public event EventHandler Voice;
 
     public override bool Move()
     {
@@ -17,7 +18,7 @@ public class Dog : Animal, IVoicalizable
 
     public void OnVocalize()
     {
-        Voice?.Invoke($"Гав!");
+        Voice?.Invoke(this, EventArgs.Empty);
     }
 
     public override bool Stand()

@@ -24,9 +24,24 @@ public partial class MainWindow : Window
         _viewModel.DogMove();
     }
 
-    private void DogVoice_Click(object sender, RoutedEventArgs e)
+    private void DogOnVoice(object sender, RoutedEventArgs e)
     {
-        _viewModel.DogOnVoice();
+        _viewModel.Dog.OnVocalize();
+    }
+
+    private void PantherOnVoice(object sender, RoutedEventArgs e)
+    {
+        _viewModel.Panther.OnVocalize();
+    }
+    
+    private void PantherOnClimb(object sender, RoutedEventArgs e)
+    {
+        _viewModel.Panther.OnClimbTree();
+    }
+
+    private void ShowVoiceMessage(object sender, string message)
+    {
+        MessageBox.Show(message);
     }
 
     private void StandDog_Click(object sender, RoutedEventArgs e)
@@ -53,11 +68,5 @@ public partial class MainWindow : Window
     {
         _viewModel.TurtleStand();
     }
-
-    private void ShowVoiceMessage(object sender, string message)
-    {
-        MessageBox.Show(message);
-    }
-
 
 }

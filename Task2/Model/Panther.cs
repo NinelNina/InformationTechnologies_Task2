@@ -2,7 +2,7 @@
 
 public class Panther : Animal, IVoicalizable
 {
-    public event IVoicalizable.VoiceHandler Voice;
+    public event EventHandler Voice;
     public event EventHandler ClimbTree;
 
     public override bool Move()
@@ -34,6 +34,6 @@ public class Panther : Animal, IVoicalizable
 
     public void OnVocalize()
     {
-        Voice?.Invoke($"Ррр!");
+        Voice?.Invoke(this, EventArgs.Empty);
     }
 }

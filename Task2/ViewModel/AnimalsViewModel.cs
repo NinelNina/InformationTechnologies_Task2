@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Task2.Model;
 
 namespace Task2.ViewModel
@@ -16,20 +15,7 @@ namespace Task2.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public event Action PantherOnVoiceCommand;
-        public event Action DogOnVoiceCommand;
-
         public event EventHandler<string> ShowVoiceMessage;
-
-        public void PantherOnVoice() 
-        { 
-            Panther.OnVocalize();
-        }
-        
-        public void DogOnVoice() 
-        { 
-            Dog.OnVocalize();
-        }
 
         public double DogSpeed
         {
@@ -81,21 +67,9 @@ namespace Task2.ViewModel
             PantherSpeed = 0;
             TurtleSpeed = 0;
 
-            DogOnVoiceCommand += DogOnVoice; 
-            PantherOnVoiceCommand += PantherOnVoice;
-            
-            Dog.Voice += Voice;
-            Panther.Voice += Voice;
-        }
-
-        private void Voice(string message)
-        {
-            Message = message;
-        }
-
-        private void OnShowVoiceMessage(string message)
-        {
-            ShowVoiceMessage?.Invoke(this, message);
+            Dog.Voice += (sender, e) => ShowVoiceMessage?.Invoke(this, "Собака лает!");
+            Panther.Voice += (sender, e) => ShowVoiceMessage?.Invoke(this, "Пантера рычит!");
+            Panther.ClimbTree += (sender, e) => ShowVoiceMessage?.Invoke(this, "Пантера залезла на дерево.");
         }
 
         public void DogMove()
@@ -120,6 +94,11 @@ namespace Task2.ViewModel
             {
                 PantherSpeed = Panther.Speed;
             }
+        }
+
+        public void PantherClimbTree()
+        {
+            Panther.OnClimbTree();
         }
 
 
